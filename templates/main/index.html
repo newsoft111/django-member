@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+<!-- Section -->
+<section>
+	<div class="container">
+			<div class="row min-vh-100 align-items-center pt-10">
+					<div class="col-lg-6 pe-xl-9 py-md-6 pt-12 pb-6">
+							<h2 class="display-6">Create, Buy,<br /> Sell, Swap and Farm NFTs</h2>
+							<p class="lead">
+									Grow your NFT brand with zero technical expertise, creator & enterprise friendly features, complete customisation, and tons of integrations.
+							</p>
+							<div class="pt-3">
+									<a class="btn btn-primary me-3" href="#">Buy Now</a>
+									<a class="btn btn-primary-soft" href="#">Lear More</a>
+							</div>
+					</div>
+					<div class="col-lg-6">
+							<img class="lg-img-110" src="{% static 'img/demo-home-01.png' %}" title="" alt="">
+					</div>
+			</div>
+	</div>
+</section>
+<!-- End Section -->
+
+<script>
+$(document).ready(function() {
+	{% if message is not None %}
+	openPopup('알림',"{{message}}");
+	{% endif %}
+});
+</script>
+
+
+{% endblock %}

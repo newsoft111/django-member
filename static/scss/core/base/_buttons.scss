@@ -1,0 +1,28 @@
+html.dark {
+    .btn-outline-dark {
+        color: $white;
+        border-color: $white;
+
+        &:hover {
+            background-color: $white;
+            border-color: $white;
+            color: $dark;
+        }
+    }
+}
+
+@mixin button-soft-variant($color, $soft-background: rgba($color, .1)) {
+    color: $color;
+    background-color: $soft-background;
+
+    &:hover {
+        color: color-contrast($color);
+        background-color: $color;
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .btn-#{$color}-soft {
+        @include button-soft-variant($value);
+    }
+}

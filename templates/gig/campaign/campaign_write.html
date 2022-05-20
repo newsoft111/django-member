@@ -1,0 +1,580 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<section class="section">
+	<div class="container">
+			<div class="row justify-content-center">
+					<div class="col-lg-8">
+							<form name="campaignWriteForm">
+								{% csrf_token %}
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between align-items-start">
+										<h6 class="mt-1">노출옵션</h6>
+									</div>
+									<div class="col-sm-9 d-flex flex-wrap justify-content-between align-items-center">
+										<!-- Card -->
+										<div class="card card-shadow w-100 mb-3">
+											<div class="card-body">
+												<!-- List -->
+												<ul class="list-unstyled list-py-1">
+													<li>
+														<!-- Radio Check -->
+														<label class="form-check form-check-reverse form-check-select form-check-pinned-top-end" for="formCheckSelect1">
+															<input type="radio" class="form-check-input d-none" name="item" value="default" id="formCheckSelect1">
+															<span class="form-check-label">
+																<span class="fw-medium">기본</span>
+																<span class="d-block h4 mb-0">무료</span>
+																<span class="d-block fs-6 text-muted">등록 시간 순으로 노출됩니다.</span>
+															</span>
+															<span class="form-check-stretched-bg"></span>
+														</label>
+														<!-- End Radio Check -->
+													</li>
+			
+													<li>
+														<!-- Radio Check -->
+														<label class="form-check form-check-reverse form-check-select form-check-pinned-top-end" for="formCheckSelect2">
+															<input type="radio" class="form-check-input d-none" name="item" value="top" id="formCheckSelect2" checked>
+															<span class="form-check-label">
+																<span class="fw-medium">상위노출 <span class="badge bg-soft-primary text-primary rounded-pill">인기상품</span></span>
+																<span class="d-block h4 mb-0">10,000원</span>
+																<span class="d-block fs-6 text-muted">기본캠페인보다 먼저 노출됩니다.</span>
+															</span>
+															<span class="form-check-stretched-bg"></span>
+														</label>
+														<!-- End Radio Check -->
+													</li>
+			
+													<li>
+														<!-- Radio Check -->
+														<label class="form-check form-check-reverse form-check-select form-check-pinned-top-end" for="formCheckSelect3">
+															<input type="radio" class="form-check-input d-none" name="item" value="recommend" id="formCheckSelect3">
+															<span class="form-check-label">
+																<span class="fw-medium">프리미엄</span>
+																<span class="d-block h4 mb-0">30,000원</span>
+																<span class="d-block fs-6 text-muted">메인페이지와 추천캠페인에 노출됩니다.</span>
+															</span>
+															<span class="form-check-stretched-bg"></span>
+														</label>
+														<!-- End Radio Check -->
+													</li>
+												</ul>
+												<!-- End List -->
+											</div>
+										</div>
+										<!-- End Card -->
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between align-items-center">
+										<h6>캠페인 타입</h6>
+									</div>
+									<div class="col-sm-9 d-flex justify-content-between align-items-center">
+										<select class="px-nice-select" name="campaign_type">
+											<option value="" selected="">타입을 선택해주세요.</option>
+											<option value="배송형">배송형</option>
+											<option value="방문형">방문형</option>
+											<option value="기자단">기자단</option>
+											<option value="구매형">구매형</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between align-items-center">
+										<h6>활동 채널</h6>
+									</div>
+									<div class="col-sm-9 d-flex justify-content-between align-items-center">
+										<select class="px-nice-select" name="channel">
+											<option value="" selected="">활동 채널을 선택해주세요.</option>
+											<option value="네이버블로그">네이버블로그</option>
+											<option value="인스타그램">인스타그램</option>
+											<option value="유튜브">유튜브</option>
+											<option value="카페">카페</option>
+											<option value="네이버포스트">네이버포스트</option>
+											<option value="기타">기타</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between">
+										<h6 class="mt-1">카테고리</h6>
+									</div>
+									<div class="col-sm-9 d-flex justify-content-between align-items-center">
+										<select class="px-nice-select" name="category">
+											<option value="" selected="">카테고리를 선택해주세요.</option>
+											<option value="코스메틱">코스메틱</option>
+											<option value="미용">미용</option>
+											<option value="패션/잡화">패션/잡화</option>
+											<option value="생활용품">생활용품</option>
+											<option value="출산/육아">출산/육아</option>
+											<option value="디지털/가전">디지털/가전</option>
+											<option value="스포츠/건강">스포츠/건강</option>
+											<option value="반려동물">반려동물</option>
+											<option value="맛집">맛집</option>
+											<option value="여행/숙박">여행/숙박</option>
+											<option value="지역/문화">지역/문화</option>
+											<option value="기타">기타</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between">
+										<h6 class="mt-1">썸네일 이미지</h6>
+									</div>
+									<div class="col-sm-9 flex-column justify-content-between align-items-center">
+										<div class="px-file-upload">
+											<input name="campaign_img" id="px_file" type="file" class="px-input-file">
+											<label for="px_file" title="파일을 선택해주세요">
+													<i class="feather-upload"></i>
+													<span class="text-center d-inline-block w-100 mb-3">이미지 파일 (jpg, jpeg, gif, png) 형식만 등록 가능합니다.</span>
+													<span class="btn btn-primary-soft px-input-selected-file">업로드</span>
+											</label>
+										</div>
+										<div class="campaign-image-preview text-center d-none">
+											<img class="img-fluid" src="{% static 'img/product-1.jpg' %}" title="" alt="">
+										</div>
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between align-items-center">
+										<h6>제목</h6>
+									</div>
+									<div class="col-sm-9 d-flex justify-content-between align-items-center">
+										<input type="text" name="subject" class="form-control" placeholder="ex)체험단 사이트 콘디">
+									</div>
+								</div>
+									
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between align-items-center">
+										<h6>제공내역</h6>
+									</div>
+									<div class="col-sm-9 d-flex justify-content-between align-items-center">
+										<input type="text" name="provide" class="form-control" placeholder="ex)10,000원 상당 콘디 이용건 제공">
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between">
+										<h6 class="mt-1">가이드라인</h6>
+									</div>
+									<div class="col-sm-9 d-flex justify-content-between align-items-center">
+										<textarea class="form-control" id="summernote" name="guide_line"></textarea>
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between align-items-center">
+										<h6>필수 키워드</h6>
+									</div>
+									<div class="col-sm-9 d-flex justify-content-between align-items-center">
+										<input type="text" name="keyword" class="form-control" placeholder="ex)블로그 체험단, 맛집리뷰">
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between align-items-center">
+										<h6>제품 URL</h6>
+									</div>
+									<div class="col-sm-9 d-flex justify-content-between align-items-center">
+										<input type="text" name="product_url" class="form-control" placeholder="ex)https://cornde.com">
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between align-items-center">
+										<h6 class="mb-4">모집기간</h6>
+									</div>
+									<div class="col-sm-9 d-flex flex-wrap justify-content-between align-items-center">
+										<div class="input-group">
+											<input type="text" name="finished_at" class="form-control text-end" value="3">
+											<span class="input-group-text bg-white">일</span>
+										</div>
+										<span class="opacity-8 small">3일은 기본제공 되며, 1일추가당 2천원씩 추가됩니다.</span>
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between align-items-center">
+										<h6 class="mb-4">모집인원</h6>
+									</div>
+									<div class="col-sm-9 d-flex flex-wrap justify-content-between align-items-center">
+										<div class="input-group">
+											<input type="text" name="limit_offer" class="form-control text-end" value="0">
+											<span class="input-group-text bg-white">명</span>
+										</div>
+										<span class="opacity-8 small">1명당 5,000원이 추가됩니다.</span>
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<div class="col-sm-3 d-flex justify-content-between align-items-center">
+										<h6 class="mb-4">제공 리워드</h6>
+									</div>
+									<div class="col-sm-9 d-flex flex-wrap justify-content-between align-items-center">
+										<div class="input-group">
+											<input type="text" name="reward" class="form-control text-end" value="0">
+											<span class="input-group-text bg-white">포인트</span>
+										</div>
+										<span class="opacity-8 small">
+											체험단에게 제공되는 포인트입니다.
+										</span>
+									</div>
+								</div>
+
+								
+
+							</form>
+					</div>
+					<div class="col-lg-4 mt-5 mt-lg-0">
+						<div class="product-card mb-3 p-3">
+							<h6 class="ps-3 py-2">결제 예상 금액</h6>
+							<ul class="list-group list-group-flush mb-4">
+								<li class="list-group-item">
+									<span class="float-start">모집기간 :</span>
+									<span class="float-end"><strong id="finished_at">0</strong>원</span>
+								</li>
+
+								<li class="list-group-item">
+									<span class="float-start">모집인원 :</span>
+									<span class="float-end"><strong id="limit_offer">0</strong>원</span>
+								</li>
+
+								<li class="list-group-item">
+									<span class="float-start">제공 리워드 :</span>
+									<span class="float-end"><strong id="reward">0</strong>원</span>
+								</li>
+								
+								<li class="list-group-item">
+									<span class="float-start">노출 옵션 :</span>
+									<span class="float-end"><strong id="item">10,000</strong>원</span>
+								</li>
+
+								<li class="list-group-item">
+									<span class="float-start">캠페인 등록비 :</span>
+									<span class="float-end"><strong>100</strong>원</span>
+								</li>
+
+								<li class="list-group-item">
+									<span class="float-start">포인트 사용 :</span>
+									<span class="float-end"><strong>0</strong>원</span>
+								</li>
+							</ul>
+
+							
+							<div class="row px-3">
+								<p class="lead fw-bold w-50">합계 :</p>
+								<p class="text-primary text-end lead w-50"><strong id="total_price">10,100</strong>원</p>
+							</div>
+						</div>
+
+						<div class="product-card p-4">
+							<button class="w-100 btn btn-primary mt-2" onclick="campaign_write_submit(this);">등록하기</button>
+						</div>
+
+						<div class="d-none" id="payment_option">
+							<div class="product-card mb-3 p-4">
+								<h6>결제 수단</h6>
+								<div class="btn-group btn-group-sm w-100 mt-3">
+									<input type="radio" class="btn-check" name="btnradio" id="btnradio1">
+									<label class="btn btn-outline-primary w-50" for="btnradio1">신용카드</label>
+		
+									<input type="radio" class="btn-check" name="btnradio" id="btnradio2">
+									<label class="btn btn-outline-primary w-50" for="btnradio2">실시간계좌이체</label>
+								</div>
+								<div class="btn-group btn-group-sm w-100  mt-1">
+									<input type="radio" class="btn-check" name="btnradio" id="btnradio3">
+									<label class="btn btn-outline-primary w-50" for="btnradio3">가상계좌</label>
+		
+									<input type="radio" class="btn-check" name="btnradio" id="btnradio4">
+									<label class="btn btn-outline-primary w-50" for="btnradio4">휴대폰결제</label>
+								</div>
+							</div>
+
+							<div class="product-card p-4">
+								<div class="row mb-2">
+									<div class="col-sm-4 d-flex justify-content-between align-items-start">
+										<p class="mt-2">포인트사용 :</p>
+									</div>
+									<div class="col-sm-8 d-flex flex-wrap justify-content-between align-items-center">
+										<div class="input-group input-group-sm">
+											<input type="text" name="use_point" class="form-control text-end" value="0">
+											<span class="input-group-text bg-white">P</span>
+										</div>
+										<span class="opacity-8 small">보유 포인트 : {{request.user.point|intcomma}} P</span>
+									</div>
+								</div>
+
+								<div class="row mb-2">
+									<div class="col-sm-4 d-flex justify-content-between align-items-start">
+										<p class="fw-bold">최종금액 :</p>
+									</div>
+									<div class="col-sm-8 d-flex flex-wrap justify-content-end align-items-center">
+										<p class="text-primary text-end lead"><strong id="pay_amount">100</strong>원</p>
+									</div>
+								</div>
+
+								<button class="w-100 btn btn-primary mt-2" onclick="payment_submit();">결제하기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</section>
+
+<!-- iamport.payment.js -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.1.js"></script>
+<!-- include summernote css/js -->
+<link href="{% static 'vendor/summernote/css/summernote-lite.css' %}" rel="stylesheet">
+<script src="{% static 'vendor/summernote/js/summernote-lite.js' %}"></script>
+<script src="{% static 'vendor/summernote/js/lang/summernote-ko-KR.js' %}"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#summernote').summernote({
+			placeholder: "ex)1.체험사진 + 물건사진(직접촬영) <br> 2.사용방법 + 발사되는 사진( + 동영상 또는 gif 함께 남겨주세요) <br> 3.글 마지막에 위 글과 함께 아래 링크 걸어주세요.",
+			width: '100%',
+			height: 400,
+			minHeight: 400,
+			maxHeight: 400,
+			fontNames: ["Noto Sans KR","Helvetica Neue"],
+			lang: 'ko-KR',
+			toolbar: [
+				['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+				['insert',['picture','video']],
+			],
+			fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+		});
+	});
+	
+	let merchant_uid = '';
+	$("input[name='item']").on('propertychange change', function (event) { 
+		let item_price = '';
+		if (this.value == 'top') {
+			item_price = 10000;
+		} else if (this.value == 'recommend') {
+			item_price = 30000;
+		} else {
+			item_price = 0;
+		}
+
+		set_total_price("item",item_price);
+	});
+
+	$("input[name='limit_offer']").on('propertychange change keyup paste input', function (event) { 
+		var reward = $('input[name="reward"]').val().replace(/[^0-9]/g, '');
+		this.value = this.value.replace(/[^0-9]/g, '');
+		set_total_price("limit_offer",this.value*5000);
+		set_total_price("reward",this.value*reward);
+	});
+
+	$("input[name='finished_at']").focusout('propertychange change keyup paste input', function (event) {
+		if (this.value<3) {
+			this.value = 3;
+		}
+		this.value = this.value.replace(/[^0-9]/g, '');
+		set_total_price("finished_at",(this.value-3)*2000);
+	});
+
+	$("input[name='reward']").on('propertychange change keyup paste input', function (event) {
+		var limit_offer = $('input[name="limit_offer"]').val();
+		this.value = this.value.replace(/[^0-9]/g,'');
+		set_total_price("reward",this.value*limit_offer);
+		this.value = this.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	});
+
+	$("input[name='use_point']").on('propertychange change keyup paste input', function (event) {
+		const total_price = Number(document.getElementById("total_price").innerText.replace(/[^0-9]/g,''));
+		this.value = this.value.replace(/[^0-9]/g,'')
+		if (this.value>total_price) {
+			this.value = total_price;
+		}
+		if (this.value>Number("{{request.user.point}}")) {
+			this.value = "{{request.user.point}}";
+		}
+		
+		document.getElementById("pay_amount").innerText = String(total_price-this.value).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		this.value = this.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+	});
+
+	function set_total_price(input_name, amount) {
+		document.getElementById(input_name).innerText = String(amount).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		const limit_offer = Number(document.getElementById("limit_offer").innerText.replace(/[^0-9]/g,''));
+		const finished_at = Number(document.getElementById("finished_at").innerText.replace(/[^0-9]/g,''));
+		const reward = Number(document.getElementById("reward").innerText.replace(/[^0-9]/g,''));
+		const item = Number(document.getElementById("item").innerText.replace(/[^0-9]/g,''));
+		const total_price = String(limit_offer + finished_at + reward + item + 100).replace(/[^0-9]/g,'').replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+		document.getElementById("total_price").innerText = total_price;
+		document.getElementById("pay_amount").innerText = total_price;
+	}
+
+	function campaign_write_submit(e) {
+		var campaignWriteForm = document.campaignWriteForm;
+    var campaign_type = campaignWriteForm.campaign_type.value;
+		var category = campaignWriteForm.category.value;
+		var channel = campaignWriteForm.channel.value;
+		var campaign_img = campaignWriteForm.campaign_img.value;
+		var subject = campaignWriteForm.subject.value;
+		var provide = campaignWriteForm.provide.value;
+		var guide_line = campaignWriteForm.guide_line.value;
+		var keyword = campaignWriteForm.keyword.value;
+		var finished_at = campaignWriteForm.finished_at.value;
+		var limit_offer = campaignWriteForm.limit_offer.value;
+		var reward = campaignWriteForm.reward.value;
+		
+    
+		if (isEmpty(campaign_type)) {
+			openPopup('알림','캠페인 타입을 선택해주세요.');
+			return false;
+		}
+		if (isEmpty(category)) {
+			openPopup('알림','카테고리를 선택해주세요.');
+			return false;
+		}
+		if (isEmpty(channel)) {
+			openPopup('알림','활동 채널을 선택해주세요.');
+			return false;
+		}
+		if (isEmpty(campaign_img)) {
+			openPopup('알림','파일을 업로드해주세요.');
+			return false;
+		}
+		if (isEmpty(subject)) {
+			openPopup('알림','제목을 입력해주세요.');
+			return false;
+		}
+		if (isEmpty(provide)) {
+			openPopup('알림','제공내역을 입력해주세요.');
+			return false;
+		}
+		if (isEmpty(guide_line)) {
+			openPopup('알림','가이드라인을 입력해주세요.');
+			return false;
+		}
+		if (isEmpty(keyword)) {
+			openPopup('알림','필수 키워드를 입력해주세요.');
+			return false;
+		}
+		if (isEmpty(finished_at)) {
+			openPopup('알림','모집기간을 입력해주세요.');
+			return false;
+		}
+		if (isEmpty(limit_offer) || limit_offer<=0) {
+			openPopup('알림','모집인원을 입력해주세요.');
+			return false;
+		}
+
+		var queryString = new FormData(document.querySelector('form[name=campaignWriteForm]'));
+ 
+    $.ajax({
+        type : 'POST',
+        url : "{{request.path}}",
+				enctype	: 'multipart/form-data',
+        data : queryString,
+        dataType : 'json',
+				processData: false,
+    		contentType: false,
+        success: function(data){
+          if(data.result==200){
+            let input_list = ['finished_at', 'limit_offer', 'reward']
+						input_list.forEach(function(input) {
+							document.querySelector(`input[name=${input}]`).readOnly = true;
+						});
+						$('input[name=item]').each(function() {
+							this.setAttribute("onClick", "return(false);")
+						});
+						e.parentNode.classList.add('d-none');
+						document.querySelector("div[id=payment_option]").classList.remove('d-none');
+						merchant_uid = data.result_text;
+          }else{
+            openPopup("알림", data.result_text);
+          }
+          return;
+        },
+        error: function (request, status, error){
+          var msg = "ERROR : " + request.status + "<br>"
+			    msg +=  + "내용 : " + request.responseText + "<br>" + error;
+			    console.log(msg);
+        }
+    });
+	}
+
+	function payment_submit(){
+		const pay_amount = document.getElementById("pay_amount").innerText.replace(/[^0-9]/g, '');
+
+		IMP.init('imp14216181');
+		IMP.request_pay({
+				pg : 'kcp', // version 1.1.0부터 지원.
+				pay_method : 'card',
+				merchant_uid : merchant_uid,
+				name : `주문명:${document.querySelector("input[name=subject]").value}`,
+				amount : pay_amount, //판매 가격
+				buyer_email : "{{request.user.email}}",
+		}, function(rsp) {
+				if ( rsp.success ) {
+					$.ajax({
+						type : 'POST',
+						headers: { "X-CSRFToken": '{{csrf_token}}' },
+						url : "{% url 'CampaignPaymentCheck' %}",
+						data : {
+                imp_uid: rsp.imp_uid,
+                merchant_uid: rsp.merchant_uid,
+								use_point: $("input[name='use_point']").val()
+            },
+						dataType : 'json',
+						success: function(data){
+							if(data.result==200){
+								openPopup("알림", data.result_text, '', `location.href = '${data.next_url}'`);
+							}else{
+								openPopup("알림", data.result_text);
+							}
+							return;
+						},
+						error: function (request, status, error){
+							var msg = "ERROR : " + request.status + "<br>"
+							msg +=  + "내용 : " + request.responseText + "<br>" + error;
+							console.log(msg);
+						}
+					});
+				} else {
+					var msg = '결제에 실패하였습니다.';
+					msg += '에러내용 : ' + rsp.error_msg;
+					openPopup("알림", msg, '', 'reload');
+				}
+		});
+	}
+
+
+	document.getElementById('px_file').onchange = function() {
+		var fileTypes = ['jpg', 'jpeg', 'png'];  //acceptable file types
+
+		function readURL(input) {
+				if (input.files && input.files[0]) {
+					var extension = input.files[0].name.split('.').pop().toLowerCase(),  //file extension from input file
+							isSuccess = fileTypes.indexOf(extension) > -1;  //is extension in acceptable types
+					if (isSuccess) {			
+						var reader = new FileReader();
+						reader.onload = function(e) {
+							$('.campaign-image-preview').removeClass("d-none");
+							$('.campaign-image-preview img').attr("src", e.target.result);
+						}
+						reader.readAsDataURL(input.files[0]);
+						
+					} else { 
+						openPopup('알림','이미지 파일이 아닙니다.');
+					}
+				}
+		}
+		readURL(this);
+  }
+</script>
+
+
+{% endblock %}

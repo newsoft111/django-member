@@ -1,0 +1,98 @@
+:root {
+    --#{$px-prefix}-header-link-color: #{$px-header-link-color};
+    --#{$px-prefix}-header-bg: #{$px-header-bg};
+    --#{$px-prefix}-header-bg-rgb: #{$px-header-bg-rgb};
+    --#{$px-prefix}-header-border: #{$px-header-border};
+
+    --#{$px-prefix}-footer-link-color: #{$px-footer-link-color};
+    --#{$px-prefix}-footer-link-color-hover: #{$px-footer-link-color-hover};
+    --#{$px-prefix}-footer-bg: #{$px-footer-bg};
+    --#{$px-prefix}-footer-border: #{$px-footer-border};
+
+    @each $color,
+    $value in $grays {
+        --#{$px-prefix}-gray-#{$color}: #{$value};
+    }
+
+    --#{$px-prefix}-body-color: #{$body-color};
+    --#{$px-prefix}-body-bg: #{$body-bg};
+
+    --#{$px-prefix}-heading-color: #{$dark};
+
+    --#{$px-prefix}-card-bg: #{$white};
+    --#{$px-prefix}-card-border: #{$gray-100};
+
+    --#{$px-prefix}-list-group-bg: #{$white};
+
+    --#{$px-prefix}-input-bg: #{$white};
+
+    --#{$px-prefix}-form-label-color: #{$gray-600};
+
+    --#{$px-prefix}-dropdown-bg: #{$px-dropdown-bg};
+    --#{$px-prefix}-dropdown-link-color: #{$px-dropdown-link-color};
+
+    --#{$px-prefix}-text-mode: #{$dark};
+    
+
+    --#{$px-prefix}-body-bg-v2: #{$px-body-bg-v2};
+    --#{$px-prefix}-card-bg-v2: #{$px-card-bg-v2};
+
+    --#{$px-prefix}-input-bg-v2: #{$px-input-bg-v2};
+    --#{$px-prefix}-header-bg-v2: #{$px-header-bg-v2};
+    --#{$px-prefix}-footer-bg-v2: #{$px-footer-bg-v2};
+
+}
+
+
+@mixin dark-theme {
+    --#{$px-prefix}-header-link-color: #{$px-dark-header-link-color};
+    --#{$px-prefix}-header-bg: #{$px-dark-header-bg};
+    --#{$px-prefix}-header-bg-rgb: #{$px-dark-header-bg-rgb};
+    --#{$px-prefix}-header-border: #{$px-dark-header-border};
+
+    --#{$px-prefix}-footer-link-color: #{$px-dark-footer-link-color};
+    --#{$px-prefix}-footer-link-color-hover: #{$px-dark-footer-link-color-hover};
+    --#{$px-prefix}-footer-bg: #{$px-dark-footer-bg};
+    --#{$px-prefix}-footer-border: #{$px-dark-footer-border};
+
+    @each $color,
+    $value in $grays-dark {
+        --#{$px-prefix}-gray-#{$color}: #{$value};
+    }
+
+    --#{$px-prefix}-body-color: #{$dark-body-color};
+    --#{$px-prefix}-body-bg: #{$dark-body-bg};
+
+    --#{$px-prefix}-heading-color: #{$white};
+
+    --#{$px-prefix}-card-bg: #{$dark-card-bg};
+    --#{$px-prefix}-card-border: #{$dark-gray-100};
+
+    --#{$px-prefix}-list-group-bg: #{$dark-list-group-bg};
+
+    --#{$px-prefix}-input-bg: #{$dark};
+
+    --#{$px-prefix}-form-label-color: #{$dark-body-color};
+
+    --#{$px-prefix}-dropdown-bg: #{$px-dark-dropdown-bg};
+    --#{$px-prefix}-dropdown-link-color: #{$px-dark-dropdown-link-color};
+    --#{$px-prefix}-text-mode: #{$white};
+
+    --#{$px-prefix}-body-bg-v2: #{$px-dark-body-bg-v2};
+    --#{$px-prefix}-card-bg-v2: #{$px-dark-card-bg-v2};
+
+    --#{$px-prefix}-input-bg-v2: #{$px-dark-input-bg-v2};
+    --#{$px-prefix}-header-bg-v2: #{$px-dark-header-bg-v2};
+    --#{$px-prefix}-footer-bg-v2: #{$px-dark-footer-bg-v2};
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        @include dark-theme;
+    }
+}
+
+
+:root.dark {
+    @include dark-theme;
+}

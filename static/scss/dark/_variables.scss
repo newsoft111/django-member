@@ -1,0 +1,108 @@
+// scss-docs-start gray-color-variables
+$dark-gray-100: rgba($white, 0.1) !default;
+$dark-gray-200: #353945 !default;
+$dark-gray-300: #2f3135 !default;
+$dark-gray-400: #545759 !default;
+$dark-gray-500: #585C60 !default;
+$dark-gray-600: #43484D !default;
+$dark-gray-700: #34393E !default;
+$dark-gray-800: #2B2F34 !default;
+$dark-gray-900: #010101 !default;
+
+// scss-docs-end gray-color-variables
+
+// fusv-disable
+// scss-docs-start gray-colors-map
+$grays-dark: (
+  "100": $dark-gray-100,
+  "200": $dark-gray-200,
+  "300": $dark-gray-300,
+  "400": $dark-gray-400,
+  "500": $dark-gray-500,
+  "600": $dark-gray-600,
+  "700": $dark-gray-700,
+  "800": $dark-gray-800,
+  "900": $dark-gray-900
+) !default;
+// scss-docs-end gray-colors-map
+// fusv-enable
+
+// Body
+//
+// Settings for the `<body>` element.
+ 
+$dark-body-bg:                   #010101 !default;
+$dark-body-color:                #8c8c8c !default;
+
+
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+$dark-headings-color:              $white !default;
+
+
+
+// scss-docs-start card-variables
+$dark-card-border-color:                 $dark-gray-100 !default;
+$dark-card-cap-bg:                       $dark-gray-200 !default;
+$dark-card-cap-color:                    $white !default;
+
+
+$dark-card-bg:                           $dark-gray-900 !default;
+
+// scss-docs-start list-group-variables
+$dark-list-group-bg:                     $dark-gray-900 !default;
+
+
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+// scss-docs-start btn-variables
+$dark-input-bg:                              $dark !default;
+$dark-input-color:                           $dark-body-color !default;
+$dark-input-placeholder-color:               $dark-body-color !default;
+
+
+// Accordion
+
+// scss-docs-start accordion-variables
+$dark-accordion-button-active-color:          $white !default;
+
+
+
+$px-dark-dropdown-bg:               #1f1f1f;
+$px-dark-dropdown-link-color:       rgba($white, 0.8);
+
+
+$px-dark-header-link-color: $white;
+$px-dark-header-bg: $dark;
+$px-dark-header-bg-rgb: rgba($black, 0.9); 
+$px-dark-header-border: $dark-gray-100;
+
+
+$px-dark-footer-link-color: rgba($white, 0.6);
+$px-dark-footer-link-color-hover: $white;
+$px-dark-footer-bg: $dark-gray-900;
+$px-dark-footer-border: $dark-gray-100;
+
+
+
+
+
+$px-accordion-icon-color-dark:   $dark-body-color;
+$px-accordion-icon-active-color-dark:   $primary;
+
+$accordion-button-icon-dark:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$px-accordion-icon-color-dark}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$accordion-button-active-icon-dark:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$px-accordion-icon-active-color-dark}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+
+
+
+// Dark Mode 2
+$px-dark-body-bg-v2:   #14141f !default;
+$px-dark-card-bg-v2:   #343444 !default;
+$px-dark-input-bg-v2:       #14141f !default;
+$px-dark-header-bg-v2:       #14141f !default;
+$px-dark-footer-bg-v2:       #14141f !default;

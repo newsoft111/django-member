@@ -1,0 +1,6 @@
+.text-mode {
+	color: $dark;
+	.dark & {
+		color: $white;
+	}
+}

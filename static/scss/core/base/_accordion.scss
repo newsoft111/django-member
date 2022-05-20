@@ -1,0 +1,12 @@
+html.dark {
+    .accordion-button {
+        &:not(.collapsed) {
+            &::after {
+                background-image: escape-svg($accordion-button-active-icon-dark);
+            }
+        }
+        &::after {
+        	background-image: escape-svg($accordion-button-icon-dark);
+        }
+    }
+}
